@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Quote.belongsTo(models.Profile, { foreignKey: 'profileId' })
+
+      Quote.hasMany(models.Vote, {
+        as: 'votesReceived',
+        foreignKey: 'voterId'
+      })
     }
   }
   Quote.init({
