@@ -13,7 +13,7 @@ router.use(decodeUserFromToken)
 router.get('/', checkAuth, quotesCtrl.index)
 router.post('/', checkAuth, quotesCtrl.createQuote)
 router.put('/:id', checkAuth, quotesCtrl.editQuote)
-// router.delete('/:id', checkAuth, quotesCtrl)
+router.delete('/:id', checkAuth, quotesCtrl.deleteQuote)
 
 
 

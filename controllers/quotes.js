@@ -34,11 +34,23 @@ async function editQuote(req, res) {
   }
 }
 
+async function deleteQuote(req, res) {
+  try {
+    const quote = await Quote.findByPk(req.params.id)
+    console.log(quote);
+    await quote.destroy()
+    res.status(200).json(quote)
+  } catch (error) {
+    res.status(500).json({err: error})
+  }
+}
+
 
 
 
 module.exports = {
   createQuote,
   index, 
-  editQuote
+  editQuote,
+  deleteQuote
 }
