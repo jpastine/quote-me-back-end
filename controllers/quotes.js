@@ -24,9 +24,9 @@ async function index(req, res) {
 
 async function editQuote(req, res) {
   try {
-    const quote = await Quote.update(
-      req.body,
-      { where: {id: req.params.id}, returning:true })
+    const quote = await Quote.findByPk(req.params.id)
+      quote.set(req.body)
+      await quote.save()
     res.status(200).json(quote)
   } catch (error) {
     console.log(error)
